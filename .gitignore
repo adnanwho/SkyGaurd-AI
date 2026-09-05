@@ -8,3 +8,17 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Local/generated artifacts
+.env
+data/interim/*
+data/evaluation/*
+models/trained/*
+models/metadata/*
+outputs/exports/*
+outputs/evaluation/*
+outputs/reports/*
+
+# Keep directory documentation visible
+!.gitkeep
+!**/README.md

@@ -1,0 +1,16 @@
+joblib
+numpy
+pandas
+pyod
+requests
+scikit-learn
+pytest
+
+# MVP dashboard dependency, used in later layers.
+streamlit
+plotly
+shap
+
+# Optional/advanced modules, install only when those layers are active.
+# shap
+# tensorflow

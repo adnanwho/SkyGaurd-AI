@@ -1,0 +1,14 @@
+# Runtime paths are resolved from src/skyguard/config.py.
+# Keep this file as the human-readable project configuration reference.
+project: skyguard-ai
+schema_version: "1.0"
+data:
+  processed: data/processed
+  interim: data/interim
+  evaluation: data/evaluation
+models:
+  trained: models/trained
+  metadata: models/metadata
+outputs:
+  exports: outputs/exports
+  evaluation: outputs/evaluation

@@ -1,0 +1,19 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "skyguard-web",
+      "runtimeExecutable": ".venv/Scripts/python.exe",
+      "runtimeArgs": ["server.py", "--port", "8137"],
+      "port": 8137,
+      "url": "http://localhost:8137"
+    },
+    {
+      "name": "skyguard-static",
+      "runtimeExecutable": ".venv/Scripts/python.exe",
+      "runtimeArgs": ["-m", "http.server", "8138"],
+      "port": 8138,
+      "url": "http://localhost:8138/web/index.html"
+    }
+  ]
+}

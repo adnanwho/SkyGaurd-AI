@@ -1,0 +1,4 @@
+features:
+  raw: [temperature, pressure, humidity]
+  derived: [dew_point, temperature_deviation, humidity_deviation, pressure_deviation]
+  temporal: [temperature_rate, pressure_rate, humidity_rate, persistence]

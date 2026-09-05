@@ -1,7 +1,7 @@
 [project]
-name = "sih"
+name = "skyguard-ai"
 version = "0.1.0"
-description = "Add your description here"
+description = "Hybrid anomaly detection prototype for Automatic Weather Stations"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -9,6 +9,14 @@ dependencies = [
     "numpy>=2.5.2",
     "pandas>=3.0.5",
     "pyod>=3.6.5",
+    "pytest>=8.0.0",
     "requests>=2.34.2",
     "scikit-learn>=1.9.0",
+    "streamlit>=1.63.0",
+    "plotly>=7.0.0",
+    "shap>=0.52.0",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

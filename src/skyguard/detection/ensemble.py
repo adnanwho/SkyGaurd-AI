@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import joblib
+from pathlib import Path
 
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import StandardScaler
@@ -8,6 +9,9 @@ from sklearn.preprocessing import StandardScaler
 from pyod.models.ecod import ECOD
 from pyod.models.copod import COPOD
 from pyod.models.hbos import HBOS
+from ..explainability.explanations import explain_batch
+from ..config import DEFAULT_CONFIG
+from ..utils.paths import resolve_project_path
 
 
 # ============================================================
@@ -123,6 +127,8 @@ def run_anomaly_pipeline(
     df["IF_Score"] = normalize_scores(
         df["IF_Score_Raw"]
     )
+    shap_features = pd.DataFrame(X_scaled, columns=MODEL_FEATURES, index=df.index)
+    df = pd.concat([df, explain_batch(iforest, shap_features)], axis=1)
 
     # ========================================================
     # 2. ECOD
@@ -245,29 +251,32 @@ def run_anomaly_pipeline(
     # 9. SAVE TRAINED COMPONENTS
     # ========================================================
 
+    model_dir = resolve_project_path(DEFAULT_CONFIG.paths.model_dir)
+    model_dir.mkdir(parents=True, exist_ok=True)
+
     joblib.dump(
         scaler,
-        "models/scaler.pkl"
+        model_dir / "scaler.pkl"
     )
 
     joblib.dump(
         iforest,
-        "models/isolation_forest.pkl"
+        model_dir / "isolation_forest.pkl"
     )
 
     joblib.dump(
         ecod,
-        "models/ecod.pkl"
+        model_dir / "ecod.pkl"
     )
 
     joblib.dump(
         copod,
-        "models/copod.pkl"
+        model_dir / "copod.pkl"
     )
 
     joblib.dump(
         hbos,
-        "models/hbos.pkl"
+        model_dir / "hbos.pkl"
     )
 
     # ========================================================

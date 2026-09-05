@@ -1,0 +1,6 @@
+ensemble:
+  models: [isolation_forest, ecod, copod, hbos]
+  random_state: 42
+  contamination: 0.02
+optional:
+  temporal_model: lstm_autoencoder
